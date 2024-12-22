@@ -1,0 +1,31 @@
+﻿@model LmsOnlineProject.Models.Branslar
+@{
+    ViewBag.Title = "BransGetir";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Branş Düzenleme</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("BransGuncelle", "Brans", "Admin", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                @Html.HiddenFor(x => x.BransId)
+
+                                <label>Branş Adı</label>
+                                @Html.TextBoxFor(x => x.BransAd, new { @class = "form-control" })
+                            </div>
+                            <br />
+                            <br />
+                            <button class="btn btn-dark" style="margin-right:20px">Güncelle</button>
+                            <a href="/Admin/Brans/BransList" class="btn btn-warning">Branşlar Sayfasına Geri Dön</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>

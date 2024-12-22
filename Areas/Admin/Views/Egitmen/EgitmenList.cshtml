@@ -1,0 +1,64 @@
+﻿@model LmsOnlineProject.Models.EgitmenViewModel
+@{
+    ViewBag.Title = "EgitmenList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Eğitmen Listesi</h4>
+            </div>
+            <br />
+            <div class="col-xl-12">
+                <div class="alert alert-outline-dark alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span><i class="mdi mdi-close"></i></span>
+                    </button>
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-1 mb-1">Bilgilendirme</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>EĞİTMEN ID</th>
+                                <th>EĞİTMEN GÖRSELİ</th>
+                                <th>EĞİTMEN ADI</th>
+                                <th>EĞİTMEN SOYADI</th>
+                                <th>EĞİTMEN EMAİL</th>
+                                <th>EĞİTMEN BRANŞI</th>
+                                <th>İŞLEMLER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Egitmenler)
+                            {
+                                <tr>
+                                    <td>@item.EgitmenId</td>
+                                    <td><img aligin="middle" src="@item.EgitmenImage" width="100px" height="auto" /></td>
+                                    <td>@item.EgitmenAd</td>
+                                    <td>@item.EgitmenSoyad</td>
+                                    <td>@item.EgitmenEmail</td>
+                                    <td>@item.Branslar.BransAd</td>
+                                    <td>
+                                        <a href="/Admin/Egitmen/EgitmenGetir/@item.EgitmenId" class="btn btn-dark">Güncelle</a>
+                                        <a href="/Admin/Egitmen/EgitmenSil/@item.EgitmenId" class="btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

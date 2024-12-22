@@ -1,0 +1,45 @@
+﻿@model LmsOnlineProject.Models.Egitmenler
+@{
+    ViewBag.Title = "EgitmenGetir";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Eğitmen Düzenleme</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("EgitmenGuncelle", "Egitmen", "Admin", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                @Html.HiddenFor(x => x.EgitmenId)
+                                <br />
+                                <label>Eğitmen Adı</label>
+                                @Html.TextBoxFor(x => x.EgitmenAd, new { @class = "form-control" })
+                                <br />
+                                <label>Eğitmen Soyadı</label>
+                                @Html.TextBoxFor(x => x.EgitmenSoyad, new { @class = "form-control" })
+                                <br />
+                                <label>Eğitmen Email</label>
+                                @Html.TextBoxFor(x => x.EgitmenEmail, new { @class = "form-control" })
+                                <br />
+                                <label>Eğitmen Görsel Linki</label>
+                                @Html.TextBoxFor(x => x.EgitmenImage, new { @class = "form-control" })
+                                <br />
+                                <label>Eğitmen Branş Seçimi</label>
+                                @Html.DropDownListFor(x=>x.BransId, (List<SelectListItem>)ViewBag.branslist, new {@class="form-control"})
+                                <br />
+                            </div>
+                            <br />
+                            <br />
+                            <button class="btn btn-dark" style="margin-right:20px">Güncelle</button>
+                            <a href="/Admin/Egitmen/EgitmenList" class="btn btn-warning">Eğitmenler Sayfasına Geri Dön</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>

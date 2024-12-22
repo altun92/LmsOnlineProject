@@ -1,0 +1,68 @@
+﻿@model LmsOnlineProject.Models.KursViewModel
+@{
+    ViewBag.Title = "KursList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Kurs Listesi</h4>
+            </div>
+            <br />
+            <div class="col-xl-12">
+                <div class="alert alert-outline-dark alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span><i class="mdi mdi-close"></i></span>
+                    </button>
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-1 mb-1">Bilgilendirme</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>KURS ADI</th>
+                                <th>BAŞLANGIÇ TARİHİ</th>
+                                <th>BİTİŞ TARİHİ</th>
+                                <th>FİYATI</th>
+                                <th>KAPASİTESİ</th>
+                                <th>EĞİTMEN</th>
+                                <th>AÇIKLAMA</th>
+                                <th>İŞLEMLER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.kurslars)
+                            {
+                                <tr>
+                                    <td><img aligin="middle" src="@item.KursImage" width="100px" height="auto" /></td>
+                                    <td>@item.KursAd</td>
+                                    <td>@item.KursBaslangicTarih.ToShortDateString()</td>
+                                    <td>@item.KursBitisTarih.ToShortDateString()</td>
+                                    <td>@item.KursFiyat TL</td>
+                                    <td>@item.KursKapasite</td>
+                                    <td>@item.Egitmenler.EgitmenAd @item.Egitmenler.EgitmenSoyad</td>
+                                    <td>@item.KursAciklama</td>
+                                    <td>
+                                        <a href="/Admin/Kurs/KursGetir/@item.KursId" class="btn btn-dark">Güncelle</a>
+                                        <a href="/Admin/Kurs/KursSil/@item.KursId" class="btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

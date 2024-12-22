@@ -1,0 +1,56 @@
+﻿@model List<LmsOnlineProject.Models.Branslar>
+@{
+    ViewBag.Title = "BransList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Branş Listesi</h4>
+            </div>
+            <br />
+            <div class="col-xl-12">
+                <div class="alert alert-outline-dark alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span><i class="mdi mdi-close"></i></span>
+                    </button>
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-1 mb-1">Bilgilendirme</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>Branş Id</th>
+                                <th>Branş Adı</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.BransId</td>
+                                    <td>@item.BransAd</td>
+                                    <td>
+                                        <a href="/Admin/Brans/BransGetir/@item.BransId" class="btn btn-dark">Güncelle</a>
+                                        <a href="/Admin/Brans/BransSil/@item.BransId" class="btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
